@@ -1,0 +1,17 @@
+.parent {
+    border: solid 1px rgb(0, 252, 164);
+    height: 100%;
+}
+
+.header {
+    border: solid 1px rgb(253, 165, 253);
+    height: 50px;
+}
+
+.client {
+    border: solid 1px rgb(253, 165, 253);
+}
+
+.footer {
+    border: solid 1px rgb(253, 165, 253);
+}
