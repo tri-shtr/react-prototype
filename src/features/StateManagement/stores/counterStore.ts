@@ -5,7 +5,7 @@ import { create } from 'zustand'
 
 type Store = {
   count: number;
-  updateTime: number;
+  updateTime: string;
   increment: () => void;
   decrement: () => void;
   reset: () => void;
@@ -13,15 +13,21 @@ type Store = {
 
 let useCounterStore = create<Store>((set, get) => ({
     count: 0,
-    updateTime: 0,
+    updateTime: "-",
     increment: () => set((state) => ({
       count: state.count + 1,
-      updateTime: new Date().getTime()
+      updateTime: new Date().toLocaleString("ja")
     })),
-    decrement: () => set((state) => ({ count: state.count - 1 })),
+    decrement: () => set((state) => ({
+      count: state.count - 1,
+      updateTime: new Date().toLocaleString("ja")
+    })),
     reset: () => {
       if(get().count !== 0) {
-        set({ count: 0 })
+        set({
+          count: 0,
+          updateTime: new Date().toLocaleString("ja")
+        })
       }
     }
   }))
