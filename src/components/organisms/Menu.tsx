@@ -11,6 +11,8 @@ function Menu(props:any) {
             <a href="/StateManagement">状態管理</a>
             |
             <a href="/Form">フォーム</a>
+            |
+            <a href="/ServerCommunication">サーバー通信</a>
         </div>
     )
 }
