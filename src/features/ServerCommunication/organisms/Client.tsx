@@ -1,5 +1,8 @@
 import axios from 'axios';
 import { useState } from 'react';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { Product } from '../types';
+import ProductsTable from '../atoms/ProductsTable';
 
 type Address = {
     street: string,
@@ -31,18 +34,11 @@ type UserData = {
     company: Company
 }
 
-type Post = {
-    userId: number,
-    id: number,
-    title: string,
-    body: string
-}
-
 export default function Client() {
     let [ users, setUsers ] = useState<Array<UserData>>([]);
 
     let getUserData = (): void => {
-        axios.get('https://jsonplaceholder.typicode.com/users')
+        axios.get('http://localhost:58080/users')
         .then((response:any) => {
             setUsers(response.data);
         })
@@ -53,14 +49,30 @@ export default function Client() {
 
         });
 
+    };
+
+    let { register, handleSubmit, reset } = useForm<UserData>();
+
+    let createUserData: SubmitHandler<UserData> = (data) => {
+        axios.post('http://localhost:58080/users', data)
+        .then((response:any) => {
+            reset();
+            console.log(response.data);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+        .finally(() => {
+
+        });
     }
 
-    let [ posts, setPosts ] = useState<Array<Post>>([]);
+    let [ products, setProducts ] = useState<Array<Product>>([]);
 
-    let getPostData = (): void => {
-        axios.get('https://jsonplaceholder.typicode.com/posts')
+    let getProducts = (): void => {
+        axios.get('http://localhost:58080/products')
         .then((response:any) => {
-            setPosts(response.data);
+            setProducts(response.data);
         })
         .catch((error) => {
             console.log(error);
@@ -73,6 +85,25 @@ export default function Client() {
     return (
         <div>
             <button onClick={getUserData}>get user data</button>
+            <div>
+                <h2>Create user</h2>
+                <form onSubmit={handleSubmit(createUserData)}>
+                    <label>id</label>
+                    <input {...register('id', {required: true})} />
+
+                    <label>name</label>
+                    <input {...register('name')} />
+
+                    <label>username</label>
+                    <input {...register('username')} />
+
+                    <label>email</label>
+                    <input {...register('email')} />
+
+                    <input type="submit" />
+                </form>
+            </div>
+            
             <hr />
             <table>
                 <thead>
@@ -85,19 +116,9 @@ export default function Client() {
                 </tbody>
             </table>
             <hr />
-            <button onClick={getPostData}>get post data</button>
+            <button onClick={getProducts}>get Products</button>
             <hr />
-            <table>
-                <thead>
-                    <tr><th>id</th><th>User ID</th><th>Title</th><th>Body</th></tr>
-                </thead>
-                <tbody>
-                    {posts.map((post:Post, index: number) => (
-                        <tr key={index}><td>{post.id}</td><td>{post.userId}</td><td>{post.title}</td><td>{post.body}</td></tr>
-                    ))}
-                </tbody>
-            </table>
-
+            <ProductsTable data={products} />
         </div>
     );
 };
