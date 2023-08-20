@@ -3,6 +3,7 @@ import Page01 from './features/page01/page/Page01.tsx';
 import Page02 from './features/page02/page/Page02.tsx';
 import StateManagement from './features/StateManagement/page/Page.tsx';
 import ReactHookForm from './features/Form/page/Page.tsx';
+import ErrorHandling from './features/ErrorHandling/page/Page.tsx'
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
         <Route path="/page02" element={<Page02 />} />
         <Route path="/StateManagement" element={<StateManagement />} />
         <Route path="/Form" element={<ReactHookForm />} />
+        <Route path="/ErrorHandling" element={<ErrorHandling />} />
       </Routes>
     </BrowserRouter>
   );
