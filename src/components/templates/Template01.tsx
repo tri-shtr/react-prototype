@@ -1,8 +1,9 @@
 import './Template01.css';
+import '../common.css';
 
 function Template01(props:any) {
   return (
-    <div className="parent">
+    <>
         <div className="header">
             {props.header}
         </div>
@@ -12,7 +13,7 @@ function Template01(props:any) {
         <div className="footer">
             {props.footer}
         </div>
-    </div>
+    </>
     );
 }
 

@@ -1,4 +1,3 @@
-
 function Menu(props:any) {
     return (
         <div>
@@ -12,9 +11,10 @@ function Menu(props:any) {
             |
             <a href="/Form">フォーム</a>
             |
+            <a href="/ServerCommunication">サーバー通信</a>
+            |
             <a href="/ErrorHandling">エラー処理</a>
         </div>
     )
 }
-
 export default Menu;
