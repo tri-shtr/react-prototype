@@ -1,6 +1,11 @@
+import barysan from '../assets/barysan.jpg';
+
 function Page02Client() {
     return (
-        <h2>This is Page02 contents.</h2>
+        <>
+            <h2>バリィさん</h2>
+            <img src={barysan}></img>
+        </>
     );
 }
 
