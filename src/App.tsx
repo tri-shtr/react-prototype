@@ -13,18 +13,21 @@ function App() {
   const queryClient = new QueryClient();
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/page01" element={<Page01 />} />
-          <Route path="/page02" element={<Page02 />} />
-          <Route path="/StateManagement" element={<StateManagement />} />
-          <Route path="/Form" element={<ReactHookForm />} />
-        <Route path="/ErrorHandling" element={<ErrorHandling />} />
-          <Route path="/ServerCommunication" element={<ServerCommunication />} />
-        </Routes>
-      </BrowserRouter>
-    </QueryClientProvider>
+    <>
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Page01 />} />
+            <Route path="/page01" element={<Page01 />} />
+            <Route path="/page02" element={<Page02 />} />
+            <Route path="/StateManagement" element={<StateManagement />} />
+            <Route path="/Form" element={<ReactHookForm />} />
+            <Route path="/ErrorHandling" element={<ErrorHandling />} />
+            <Route path="/ServerCommunication" element={<ServerCommunication />} />
+          </Routes>
+        </BrowserRouter>
+      </QueryClientProvider>
+    </>
   );
 }
 
