@@ -1,19 +1,21 @@
+import { Link } from 'react-router-dom';
+
 function Menu(props:any) {
     return (
         <div>
             {props.ScreenName}
             |
-            <a href="/page01">Page01</a>
+            <Link to="/page01">Page01</Link>
             |
-            <a href="/page02">Page02</a>
+            <Link to="/page02">画像の表示</Link>
             |
-            <a href="/StateManagement">状態管理</a>
+            <Link to="/StateManagement">状態管理</Link>
             |
-            <a href="/Form">フォーム</a>
+            <Link to="/Form">フォーム</Link>
             |
-            <a href="/ServerCommunication">サーバー通信</a>
+            <Link to="/ServerCommunication">サーバー通信</Link>
             |
-            <a href="/ErrorHandling">エラー処理</a>
+            <Link to="/ErrorHandling">エラー処理</Link>
         </div>
     )
 }
